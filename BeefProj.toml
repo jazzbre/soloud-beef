@@ -1,0 +1,6 @@
+FileVersion = 1
+
+[Project]
+Name = "soloud-beef"
+TargetType = "BeefLib"
+StartupObject = "soloud_beef.Program"
