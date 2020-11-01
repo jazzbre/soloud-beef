@@ -67,7 +67,7 @@ public class Soloud : SoloudObject
 
 	[CLink]
 	private static extern int32 Soloud_initEx(void* aObjHandle, uint32 aFlags, uint32 aBackend, uint32 aSamplerate, uint32 aBufferSize, uint32 aChannels);
-	public int32 init(uint32 aFlags, uint32 aBackend, uint32 aSamplerate, uint32 aBufferSize, uint32 aChannels)
+	public int32 init(uint32 aFlags = CLIP_ROUNDOFF, uint32 aBackend = AUTO, uint32 aSamplerate = AUTO, uint32 aBufferSize = AUTO, uint32 aChannels = 2)
 	{
 		return Soloud_initEx(objhandle, aFlags, aBackend, aSamplerate, aBufferSize, aChannels);
 	}
@@ -144,35 +144,35 @@ public class Soloud : SoloudObject
 
 	[CLink]
 	private static extern uint32 Soloud_playEx(void* aObjHandle, void * aSound, float aVolume, float aPan, int32 aPaused, uint32 aBus);
-	public uint32 play(SoloudObject aSound, float aVolume, float aPan, int32 aPaused, uint32 aBus)
+	public uint32 play(SoloudObject aSound, float aVolume = -1.0f, float aPan = 0.0f, int32 aPaused = 0, uint32 aBus = 0)
 	{
 		return Soloud_playEx(objhandle, aSound.objhandle, aVolume, aPan, aPaused, aBus);
 	}
 
 	[CLink]
 	private static extern uint32 Soloud_playClockedEx(void* aObjHandle, double aSoundTime, void * aSound, float aVolume, float aPan, uint32 aBus);
-	public uint32 playClocked(double aSoundTime, SoloudObject aSound, float aVolume, float aPan, uint32 aBus)
+	public uint32 playClocked(double aSoundTime, SoloudObject aSound, float aVolume = -1.0f, float aPan = 0.0f, uint32 aBus = 0)
 	{
 		return Soloud_playClockedEx(objhandle, aSoundTime, aSound.objhandle, aVolume, aPan, aBus);
 	}
 
 	[CLink]
 	private static extern uint32 Soloud_play3dEx(void* aObjHandle, void * aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, int32 aPaused, uint32 aBus);
-	public uint32 play3d(SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, int32 aPaused, uint32 aBus)
+	public uint32 play3d(SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX = 0.0f, float aVelY = 0.0f, float aVelZ = 0.0f, float aVolume = 1.0f, int32 aPaused = 0, uint32 aBus = 0)
 	{
 		return Soloud_play3dEx(objhandle, aSound.objhandle, aPosX, aPosY, aPosZ, aVelX, aVelY, aVelZ, aVolume, aPaused, aBus);
 	}
 
 	[CLink]
 	private static extern uint32 Soloud_play3dClockedEx(void* aObjHandle, double aSoundTime, void * aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, uint32 aBus);
-	public uint32 play3dClocked(double aSoundTime, SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, uint32 aBus)
+	public uint32 play3dClocked(double aSoundTime, SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX = 0.0f, float aVelY = 0.0f, float aVelZ = 0.0f, float aVolume = 1.0f, uint32 aBus = 0)
 	{
 		return Soloud_play3dClockedEx(objhandle, aSoundTime, aSound.objhandle, aPosX, aPosY, aPosZ, aVelX, aVelY, aVelZ, aVolume, aBus);
 	}
 
 	[CLink]
 	private static extern uint32 Soloud_playBackgroundEx(void* aObjHandle, void * aSound, float aVolume, int32 aPaused, uint32 aBus);
-	public uint32 playBackground(SoloudObject aSound, float aVolume, int32 aPaused, uint32 aBus)
+	public uint32 playBackground(SoloudObject aSound, float aVolume = -1.0f, int32 aPaused = 0, uint32 aBus = 0)
 	{
 		return Soloud_playBackgroundEx(objhandle, aSound.objhandle, aVolume, aPaused, aBus);
 	}
@@ -676,7 +676,7 @@ public class Soloud : SoloudObject
 
 	[CLink]
 	private static extern void Soloud_set3dListenerParametersEx(void* aObjHandle, float aPosX, float aPosY, float aPosZ, float aAtX, float aAtY, float aAtZ, float aUpX, float aUpY, float aUpZ, float aVelocityX, float aVelocityY, float aVelocityZ);
-	public void set3dListenerParameters(float aPosX, float aPosY, float aPosZ, float aAtX, float aAtY, float aAtZ, float aUpX, float aUpY, float aUpZ, float aVelocityX, float aVelocityY, float aVelocityZ)
+	public void set3dListenerParameters(float aPosX, float aPosY, float aPosZ, float aAtX, float aAtY, float aAtZ, float aUpX, float aUpY, float aUpZ, float aVelocityX = 0.0f, float aVelocityY = 0.0f, float aVelocityZ = 0.0f)
 	{
 		Soloud_set3dListenerParametersEx(objhandle, aPosX, aPosY, aPosZ, aAtX, aAtY, aAtZ, aUpX, aUpY, aUpZ, aVelocityX, aVelocityY, aVelocityZ);
 	}
@@ -711,7 +711,7 @@ public class Soloud : SoloudObject
 
 	[CLink]
 	private static extern void Soloud_set3dSourceParametersEx(void* aObjHandle, uint32 aVoiceHandle, float aPosX, float aPosY, float aPosZ, float aVelocityX, float aVelocityY, float aVelocityZ);
-	public void set3dSourceParameters(uint32 aVoiceHandle, float aPosX, float aPosY, float aPosZ, float aVelocityX, float aVelocityY, float aVelocityZ)
+	public void set3dSourceParameters(uint32 aVoiceHandle, float aPosX, float aPosY, float aPosZ, float aVelocityX = 0.0f, float aVelocityY = 0.0f, float aVelocityZ = 0.0f)
 	{
 		Soloud_set3dSourceParametersEx(objhandle, aVoiceHandle, aPosX, aPosY, aPosZ, aVelocityX, aVelocityY, aVelocityZ);
 	}
@@ -841,7 +841,7 @@ public class Ay : SoloudObject
 
 	[CLink]
 	private static extern void Ay_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Ay_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -1044,28 +1044,28 @@ public class Bus : SoloudObject
 
 	[CLink]
 	private static extern uint32 Bus_playEx(void* aObjHandle, void * aSound, float aVolume, float aPan, int32 aPaused);
-	public uint32 play(SoloudObject aSound, float aVolume, float aPan, int32 aPaused)
+	public uint32 play(SoloudObject aSound, float aVolume = 1.0f, float aPan = 0.0f, int32 aPaused = 0)
 	{
 		return Bus_playEx(objhandle, aSound.objhandle, aVolume, aPan, aPaused);
 	}
 
 	[CLink]
 	private static extern uint32 Bus_playClockedEx(void* aObjHandle, double aSoundTime, void * aSound, float aVolume, float aPan);
-	public uint32 playClocked(double aSoundTime, SoloudObject aSound, float aVolume, float aPan)
+	public uint32 playClocked(double aSoundTime, SoloudObject aSound, float aVolume = 1.0f, float aPan = 0.0f)
 	{
 		return Bus_playClockedEx(objhandle, aSoundTime, aSound.objhandle, aVolume, aPan);
 	}
 
 	[CLink]
 	private static extern uint32 Bus_play3dEx(void* aObjHandle, void * aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, int32 aPaused);
-	public uint32 play3d(SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume, int32 aPaused)
+	public uint32 play3d(SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX = 0.0f, float aVelY = 0.0f, float aVelZ = 0.0f, float aVolume = 1.0f, int32 aPaused = 0)
 	{
 		return Bus_play3dEx(objhandle, aSound.objhandle, aPosX, aPosY, aPosZ, aVelX, aVelY, aVelZ, aVolume, aPaused);
 	}
 
 	[CLink]
 	private static extern uint32 Bus_play3dClockedEx(void* aObjHandle, double aSoundTime, void * aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume);
-	public uint32 play3dClocked(double aSoundTime, SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX, float aVelY, float aVelZ, float aVolume)
+	public uint32 play3dClocked(double aSoundTime, SoloudObject aSound, float aPosX, float aPosY, float aPosZ, float aVelX = 0.0f, float aVelY = 0.0f, float aVelZ = 0.0f, float aVolume = 1.0f)
 	{
 		return Bus_play3dClockedEx(objhandle, aSoundTime, aSound.objhandle, aPosX, aPosY, aPosZ, aVelX, aVelY, aVelZ, aVolume);
 	}
@@ -1191,7 +1191,7 @@ public class Bus : SoloudObject
 
 	[CLink]
 	private static extern void Bus_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Bus_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -1251,7 +1251,7 @@ public class DCRemovalFilter : SoloudObject
 
 	[CLink]
 	private static extern int32 DCRemovalFilter_setParamsEx(void* aObjHandle, float aLength);
-	public int32 setParams(float aLength)
+	public int32 setParams(float aLength = 0.1f)
 	{
 		return DCRemovalFilter_setParamsEx(objhandle, aLength);
 	}
@@ -1350,7 +1350,7 @@ public class EchoFilter : SoloudObject
 
 	[CLink]
 	private static extern int32 EchoFilter_setParamsEx(void* aObjHandle, float aDelay, float aDecay, float aFilter);
-	public int32 setParams(float aDelay, float aDecay, float aFilter)
+	public int32 setParams(float aDelay, float aDecay = 0.7f, float aFilter = 0.0f)
 	{
 		return EchoFilter_setParamsEx(objhandle, aDelay, aDecay, aFilter);
 	}
@@ -1619,7 +1619,7 @@ public class Monotone : SoloudObject
 
 	[CLink]
 	private static extern int32 Monotone_setParamsEx(void* aObjHandle, int32 aHardwareChannels, int32 aWaveform);
-	public int32 setParams(int32 aHardwareChannels, int32 aWaveform)
+	public int32 setParams(int32 aHardwareChannels, int32 aWaveform = Soloud.WAVE_SQUARE)
 	{
 		return Monotone_setParamsEx(objhandle, aHardwareChannels, aWaveform);
 	}
@@ -1633,7 +1633,7 @@ public class Monotone : SoloudObject
 
 	[CLink]
 	private static extern int32 Monotone_loadMemEx(void* aObjHandle, uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return Monotone_loadMemEx(objhandle, aMem, aLength, aCopy, aTakeOwnership);
 	}
@@ -1703,7 +1703,7 @@ public class Monotone : SoloudObject
 
 	[CLink]
 	private static extern void Monotone_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Monotone_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -1844,7 +1844,7 @@ public class Noise : SoloudObject
 
 	[CLink]
 	private static extern void Noise_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Noise_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -1918,7 +1918,7 @@ public class Openmpt : SoloudObject
 
 	[CLink]
 	private static extern int32 Openmpt_loadMemEx(void* aObjHandle, uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return Openmpt_loadMemEx(objhandle, aMem, aLength, aCopy, aTakeOwnership);
 	}
@@ -1988,7 +1988,7 @@ public class Openmpt : SoloudObject
 
 	[CLink]
 	private static extern void Openmpt_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Openmpt_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2083,7 +2083,7 @@ public class Queue : SoloudObject
 
 	[CLink]
 	private static extern int32 Queue_setParamsEx(void* aObjHandle, float aSamplerate, uint32 aChannels);
-	public int32 setParams(float aSamplerate, uint32 aChannels)
+	public int32 setParams(float aSamplerate, uint32 aChannels = 2)
 	{
 		return Queue_setParamsEx(objhandle, aSamplerate, aChannels);
 	}
@@ -2146,7 +2146,7 @@ public class Queue : SoloudObject
 
 	[CLink]
 	private static extern void Queue_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Queue_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2297,7 +2297,7 @@ public class Sfxr : SoloudObject
 
 	[CLink]
 	private static extern int32 Sfxr_loadParamsMemEx(void* aObjHandle, uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadParamsMem(uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadParamsMem(uint8 * aMem, uint32 aLength, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return Sfxr_loadParamsMemEx(objhandle, aMem, aLength, aCopy, aTakeOwnership);
 	}
@@ -2374,7 +2374,7 @@ public class Sfxr : SoloudObject
 
 	[CLink]
 	private static extern void Sfxr_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Sfxr_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2455,7 +2455,7 @@ public class Speech : SoloudObject
 
 	[CLink]
 	private static extern int32 Speech_setParamsEx(void* aObjHandle, uint32 aBaseFrequency, float aBaseSpeed, float aBaseDeclination, int32 aBaseWaveform);
-	public int32 setParams(uint32 aBaseFrequency, float aBaseSpeed, float aBaseDeclination, int32 aBaseWaveform)
+	public int32 setParams(uint32 aBaseFrequency = 1330, float aBaseSpeed = 10.0f, float aBaseDeclination = 0.5f, int32 aBaseWaveform = KW_TRIANGLE)
 	{
 		return Speech_setParamsEx(objhandle, aBaseFrequency, aBaseSpeed, aBaseDeclination, aBaseWaveform);
 	}
@@ -2518,7 +2518,7 @@ public class Speech : SoloudObject
 
 	[CLink]
 	private static extern void Speech_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Speech_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2592,7 +2592,7 @@ public class TedSid : SoloudObject
 
 	[CLink]
 	private static extern int32 TedSid_loadMemEx(void* aObjHandle, uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return TedSid_loadMemEx(objhandle, aMem, aLength, aCopy, aTakeOwnership);
 	}
@@ -2662,7 +2662,7 @@ public class TedSid : SoloudObject
 
 	[CLink]
 	private static extern void TedSid_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		TedSid_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2820,7 +2820,7 @@ public class Vic : SoloudObject
 
 	[CLink]
 	private static extern void Vic_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Vic_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -2950,7 +2950,7 @@ public class Vizsn : SoloudObject
 
 	[CLink]
 	private static extern void Vizsn_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Vizsn_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -3024,7 +3024,7 @@ public class Wav : SoloudObject
 
 	[CLink]
 	private static extern int32 Wav_loadMemEx(void* aObjHandle, uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadMem(uint8 * aMem, uint32 aLength, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return Wav_loadMemEx(objhandle, aMem, aLength, aCopy, aTakeOwnership);
 	}
@@ -3038,21 +3038,21 @@ public class Wav : SoloudObject
 
 	[CLink]
 	private static extern int32 Wav_loadRawWave8Ex(void* aObjHandle, uint8 * aMem, uint32 aLength, float aSamplerate, uint32 aChannels);
-	public int32 loadRawWave8(uint8 * aMem, uint32 aLength, float aSamplerate, uint32 aChannels)
+	public int32 loadRawWave8(uint8 * aMem, uint32 aLength, float aSamplerate = 44100.0f, uint32 aChannels = 1)
 	{
 		return Wav_loadRawWave8Ex(objhandle, aMem, aLength, aSamplerate, aChannels);
 	}
 
 	[CLink]
 	private static extern int32 Wav_loadRawWave16Ex(void* aObjHandle, uint16 * aMem, uint32 aLength, float aSamplerate, uint32 aChannels);
-	public int32 loadRawWave16(uint16 * aMem, uint32 aLength, float aSamplerate, uint32 aChannels)
+	public int32 loadRawWave16(uint16 * aMem, uint32 aLength, float aSamplerate = 44100.0f, uint32 aChannels = 1)
 	{
 		return Wav_loadRawWave16Ex(objhandle, aMem, aLength, aSamplerate, aChannels);
 	}
 
 	[CLink]
 	private static extern int32 Wav_loadRawWaveEx(void* aObjHandle, float * aMem, uint32 aLength, float aSamplerate, uint32 aChannels, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadRawWave(float * aMem, uint32 aLength, float aSamplerate, uint32 aChannels, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadRawWave(float * aMem, uint32 aLength, float aSamplerate = 44100.0f, uint32 aChannels = 1, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return Wav_loadRawWaveEx(objhandle, aMem, aLength, aSamplerate, aChannels, aCopy, aTakeOwnership);
 	}
@@ -3122,7 +3122,7 @@ public class Wav : SoloudObject
 
 	[CLink]
 	private static extern void Wav_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		Wav_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}
@@ -3258,7 +3258,7 @@ public class WavStream : SoloudObject
 
 	[CLink]
 	private static extern int32 WavStream_loadMemEx(void* aObjHandle, uint8 * aData, uint32 aDataLen, int32 aCopy, int32 aTakeOwnership);
-	public int32 loadMem(uint8 * aData, uint32 aDataLen, int32 aCopy, int32 aTakeOwnership)
+	public int32 loadMem(uint8 * aData, uint32 aDataLen, int32 aCopy = 0, int32 aTakeOwnership = 1)
 	{
 		return WavStream_loadMemEx(objhandle, aData, aDataLen, aCopy, aTakeOwnership);
 	}
@@ -3349,7 +3349,7 @@ public class WavStream : SoloudObject
 
 	[CLink]
 	private static extern void WavStream_set3dColliderEx(void* aObjHandle, void * aCollider, int32 aUserData);
-	public void set3dCollider(SoloudObject aCollider, int32 aUserData)
+	public void set3dCollider(SoloudObject aCollider, int32 aUserData = 0)
 	{
 		WavStream_set3dColliderEx(objhandle, aCollider.objhandle, aUserData);
 	}

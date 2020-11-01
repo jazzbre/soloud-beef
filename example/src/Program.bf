@@ -30,7 +30,7 @@ namespace example
 			speech.setText("1 2 3       A B C        Doooooo    Reeeeee    Miiiiii    Faaaaaa    Soooooo    Laaaaaa    Tiiiiii    Doooooo!");
 
 			soLoud.setGlobalVolume(4);
-			soLoud.play(speech, -1.0f, 0.0f, 0, 0);
+			soLoud.play(speech);
 
 			Console.WriteLine("Playing speech test..\n");
 
@@ -71,7 +71,7 @@ namespace example
 			for (i = 0; i < 2048; i++)
 				buf[i] = 0;
 
-			soLoud.play(queue, -1.0f, 0.0f, 0, 0);
+			soLoud.play(queue);
 
 			for (i = 0; i < 4; i++)
 			{
@@ -107,7 +107,7 @@ namespace example
 
 		private int Test()
 		{
-			var result = soLoud.init(Soloud.CLIP_ROUNDOFF | Soloud.ENABLE_VISUALIZATION, Soloud.AUTO, Soloud.AUTO, Soloud.AUTO, 0);
+			var result = soLoud.init(Soloud.CLIP_ROUNDOFF | Soloud.ENABLE_VISUALIZATION);
 			if(result != 0) {
 				Console.WriteLine("SoLoud initialization failed with {0}!", result);
 				return 1;
