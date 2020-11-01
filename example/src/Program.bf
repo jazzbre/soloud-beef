@@ -41,16 +41,16 @@ namespace example
 			Console.WriteLine("\nFinished.\n");
 		}
 
-		void generate_sample(float *buf, ref int32 count, Random rand)
+		void generate_sample(float* buf, ref int32 count, Random rand)
 		{
 			var base_count = count;
-			for (int32 i = 0; i < 2048; i++, base_count++)
+			for (int32 i = 0; i < 2048; i++,base_count++)
 			{
 				buf[i] = (float)Math.Sin(220 * 3.14 * 2 * base_count * (1 / 44100.0)) -
-					     (float)Math.Sin(230 * 3.14 * 2 * base_count * (1 / 44100.0));
+					(float)Math.Sin(230 * 3.14 * 2 * base_count * (1 / 44100.0));
 				buf[i] += (((rand.NextI32() % 1024) - 512) / 512.0f) *
-					      (float)Math.Sin(60 * 3.14 * 2 * base_count * (1 / 44100.0)) *
-					      (float)Math.Sin(1 * 3.14 * 2 * base_count * (1 / 44100.0));
+					(float)Math.Sin(60 * 3.14 * 2 * base_count * (1 / 44100.0)) *
+					(float)Math.Sin(1 * 3.14 * 2 * base_count * (1 / 44100.0));
 				float fade = (44100 * 10 - base_count) / (44100 * 10.0f);
 				buf[i] *= fade * fade;
 			}
@@ -63,7 +63,7 @@ namespace example
 			int32 i;
 			int32 count = 0;
 			int32 cycle = 0;
-			var queue = scope Queue();	
+			var queue = scope Queue();
 			Wav[] wav = scope Wav[4];
 			float[] buf = scope float[2048];
 			for (i = 0; i < 4; i++)
@@ -108,7 +108,8 @@ namespace example
 		private int Test()
 		{
 			var result = soLoud.init(Soloud.CLIP_ROUNDOFF | Soloud.ENABLE_VISUALIZATION);
-			if(result != 0) {
+			if (result != 0)
+			{
 				Console.WriteLine("SoLoud initialization failed with {0}!", result);
 				return 1;
 			}
