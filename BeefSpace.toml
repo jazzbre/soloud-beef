@@ -1,5 +1,5 @@
 FileVersion = 1
-Projects = {soloud-beef = {Path = "."}, example = {Path = "example"}}
+Projects = {soloud-beef = {Path = "."}, SDL2 = "*", example = {Path = "example"}}
 
 [Workspace]
 StartupProject = "example"

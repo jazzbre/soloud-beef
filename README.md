@@ -11,8 +11,8 @@
 ## Usage
 
 Open workspace and set Example as Startup project and Run!
-
-Example is the C API example from SoLoud.
+Example is the C API example from SoLoud, it uses winmm by default.
+To use SDL2, run "build_windows_vs2019.cmd PATH_TO_SDL2_HERE", and then you can run ExampleSDL2.
 
 ## Future work
 iOS, Android, macOS and Linux build scripts.

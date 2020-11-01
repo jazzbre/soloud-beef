@@ -113,6 +113,8 @@ namespace example
 				return 1;
 			}
 
+			Console.WriteLine("Using backend '{0}'!", scope String(soLoud.getBackendString()));
+
 			speech_test();
 
 			queue_test();

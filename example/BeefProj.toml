@@ -1,5 +1,5 @@
 FileVersion = 1
-Dependencies = {corlib = "*", soloud-beef = "*"}
+Dependencies = {corlib = "*", soloud-beef = "*", SDL2 = "*"}
 
 [Project]
 Name = "example"
