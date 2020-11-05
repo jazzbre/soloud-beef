@@ -16,7 +16,15 @@ set "VISUALSTUDIO19PATH=c:\Program Files (x86)\Microsoft Visual Studio\2019\Comm
 )
 
 IF EXIST "%VISUALSTUDIO19PATH%" (
-echo Building BGFX in Visual Studio 2019
+echo Building SoLoud Debug in Visual Studio 2019
+"%VISUALSTUDIO19PATH%\devenv" ".build\projects\vs2019\soloud.sln" /Build "Debug|x64"
+echo ErrorLevel:%ERRORLEVEL%
+IF %ERRORLEVEL% EQU 0 (
+   echo Build successful!
+) else (
+   echo Build failed!
+)
+echo Building SoLoud Release in Visual Studio 2019
 "%VISUALSTUDIO19PATH%\devenv" ".build\projects\vs2019\soloud.sln" /Build "Release|x64"
 echo ErrorLevel:%ERRORLEVEL%
 IF %ERRORLEVEL% EQU 0 (
