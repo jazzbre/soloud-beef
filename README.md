@@ -1,4 +1,4 @@
-# [soloud-beef](https://github.com/jazzbre/soloud) SoLoud wrapper for the Beef Programming Language
+# [soloud-beef](https://github.com/jazzbre/soloud-beef) SoLoud wrapper for the Beef Programming Language
 
 [soloud](https://github.com/jarikomppa/soloud)
 
