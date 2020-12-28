@@ -1,7 +1,8 @@
 @echo off
-IF EXIST "%1" (
-   echo Setting SDL2 path to '%1'!
-   set "SDL2PATH=%1"
+set "TESTSDL2PATH=%~dp0\..\sdl2-beef\submodules\SDL"
+IF EXIST "%TESTSDL2PATH%" (
+   echo Setting SDL2 path to '%TESTSDL2PATH%'!
+   set "SDL2PATH=%TESTSDL2PATH%"
 )
 
 submodules\bx\tools\bin\windows\genie vs2019
