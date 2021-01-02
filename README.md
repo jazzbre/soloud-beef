@@ -17,12 +17,10 @@
 
 
 ## Usage
-
 Open workspace and set Example as Startup project and Run!
-
 Example is the C API example from SoLoud, it uses *winmm backend* by default.
-
 To use SDL2, run "build_windows_vs2019.cmd PATH_TO_SDL2_HERE", run the Example and *SDL2 backend* will be used.
+MacOS/Linux can be built and run with provided VSCode project (expects Beef git clone in the same root folder as this project).
 
 ## Future work
 iOS and Android build scripts.
