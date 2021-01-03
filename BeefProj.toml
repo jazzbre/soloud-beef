@@ -18,19 +18,19 @@ LibPaths = ["$(ProjectDir)\\.build\\win64_vs2019\\bin\\soloudRelease.lib"]
 LibPaths = ["$(ProjectDir)\\.build\\win64_vs2019\\bin\\soloudRelease.lib"]
 
 [Configs.Debug.macOS]
-LibPaths = ["$(ProjectDir)\\.build\\osx64_clang\\bin\\libsoloudDebug.a"]
+LibPaths = ["$(ProjectDir)\\.build\\osx-x64\\bin\\libsoloudDebug.a"]
 OtherLinkFlags = "$(LinkFlags) -framework CoreServices -framework CoreAudio -framework AudioToolbox"
 
 [Configs.Release.macOS]
-LibPaths = ["$(ProjectDir)\\.build\\osx64_clang\\bin\\libsoloudRelease.a"]
+LibPaths = ["$(ProjectDir)\\.build\\osx-x64\\bin\\libsoloudRelease.a"]
 OtherLinkFlags = "$(LinkFlags) -framework CoreServices -framework CoreAudio -framework AudioToolbox"
 
 [Configs.Paranoid.macOS]
-LibPaths = ["$(ProjectDir)\\.build\\osx64_clang\\bin\\libsoloudRelease.a"]
+LibPaths = ["$(ProjectDir)\\.build\\osx-x64\\bin\\libsoloudRelease.a"]
 OtherLinkFlags = "$(LinkFlags) -framework CoreServices -framework CoreAudio -framework AudioToolbox"
 
 [Configs.Test.macOS]
-LibPaths = ["$(ProjectDir)\\.build\\osx64_clang\\bin\\libsoloudRelease.a"]
+LibPaths = ["$(ProjectDir)\\.build\\osx-x64\\bin\\libsoloudRelease.a"]
 OtherLinkFlags = "$(LinkFlags) -framework CoreServices -framework CoreAudio -framework AudioToolbox"
 
 [Configs.Debug.Linux64]
