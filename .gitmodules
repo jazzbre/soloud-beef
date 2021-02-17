@@ -1,6 +1,6 @@
 [submodule "submodules/soloud"]
 	path = submodules/soloud
-	url = https://github.com/prideout/soloud.git
+	url = https://github.com/jazzbre/soloud.git
 [submodule "submodules/bx"]
 	path = submodules/bx
 	url = https://github.com/bkaradzic/bx.git
