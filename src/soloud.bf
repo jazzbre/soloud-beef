@@ -3159,7 +3159,7 @@ public class Wav : SoloudObject
 	private static extern void Wav_setFilter(void* aObjHandle, uint32 aFilterId, void * aFilter);
 	public void setFilter(uint32 aFilterId, SoloudObject aFilter)
 	{
-		Wav_setFilter(objhandle, aFilterId, aFilter.objhandle);
+		Wav_setFilter(objhandle, aFilterId, aFilter != null ? aFilter.objhandle : null);
 	}
 
 	[CLink]
